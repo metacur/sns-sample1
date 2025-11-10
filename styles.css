@@ -1,0 +1,1283 @@
+/* ========================================
+   基本設定とリセット - 全体の土台
+   ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* 明るくてかわいいパステルカラーパレット */
+    --primary-pink: #FFB6D9;
+    --primary-purple: #E6B8FF;
+    --primary-blue: #B8E6FF;
+    --primary-yellow: #FFF4B8;
+    --primary-green: #B8FFD9;
+    --primary-peach: #FFCDB8;
+    
+    /* 背景色 */
+    --bg-light: #FFF9F0;
+    --bg-white: #FFFFFF;
+    --bg-card: #FFFFFF;
+    
+    /* テキスト色 */
+    --text-primary: #5A5A5A;
+    --text-secondary: #9A9A9A;
+    --text-dark: #3A3A3A;
+    
+    /* アクセント */
+    --shadow-soft: 0 8px 30px rgba(255, 182, 217, 0.15);
+    --shadow-hover: 0 15px 50px rgba(255, 182, 217, 0.25);
+    --border-radius: 20px;
+}
+
+body {
+    font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+    background: var(--bg-light);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    line-height: 1.7;
+}
+
+/* スムーススクロール */
+html {
+    scroll-behavior: smooth;
+}
+
+/* コンテナ共通設定 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ========================================
+   ナビゲーションバー - かわいい固定ヘッダー
+   ======================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 2px solid var(--primary-pink);
+    box-shadow: 0 4px 20px rgba(255, 182, 217, 0.1);
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    box-shadow: 0 4px 30px rgba(255, 182, 217, 0.2);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ロゴデザイン */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logo-icon {
+    font-size: 2rem;
+    animation: wiggle 2s ease-in-out infinite;
+}
+
+/* ロゴのアニメーション - 揺れる動き */
+@keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-10deg); }
+    75% { transform: rotate(10deg); }
+}
+
+.logo-text {
+    background: linear-gradient(135deg, var(--primary-pink) 0%, var(--primary-purple) 50%, var(--primary-blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ナビゲーションメニュー */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-pink), var(--primary-purple));
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+.nav-menu a:hover {
+    color: var(--primary-pink);
+}
+
+/* ナビゲーションアクション */
+.nav-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.search-button {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-pink);
+    background: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-button:hover {
+    background: var(--primary-pink);
+    transform: scale(1.1);
+}
+
+.upload-button {
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-pink) 0%, var(--primary-purple) 100%);
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 182, 217, 0.3);
+}
+
+.upload-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 182, 217, 0.4);
+}
+
+/* ========================================
+   ヒーローセクション - メインビジュアル
+   ======================================== */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding-top: 80px;
+    background: linear-gradient(135deg, #FFF9F0 0%, #FFF4E6 100%);
+}
+
+/* 浮遊する装飾アイコン */
+.floating-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.shape {
+    position: absolute;
+    font-size: 3rem;
+    opacity: 0.3;
+    animation: float 6s ease-in-out infinite;
+}
+
+/* 各アイコンの位置とアニメーション遅延 */
+.shape-1 { top: 10%; left: 10%; animation-delay: 0s; }
+.shape-2 { top: 20%; right: 15%; animation-delay: 1s; }
+.shape-3 { top: 60%; left: 20%; animation-delay: 2s; }
+.shape-4 { bottom: 20%; right: 20%; animation-delay: 3s; }
+.shape-5 { top: 40%; left: 5%; animation-delay: 4s; }
+.shape-6 { bottom: 30%; left: 40%; animation-delay: 5s; }
+
+/* 浮遊アニメーション */
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(10deg); }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 900px;
+    padding: 2rem;
+    animation: fadeInUp 1s ease-out;
+}
+
+/* フェードインアニメーション */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+}
+
+.title-line {
+    display: block;
+    animation: fadeInUp 0.8s ease-out backwards;
+}
+
+.title-line:nth-child(1) { animation-delay: 0.2s; }
+.title-line:nth-child(2) { animation-delay: 0.4s; }
+.title-line:nth-child(3) { animation-delay: 0.6s; }
+
+/* レインボーテキストエフェクト */
+.rainbow-text {
+    background: linear-gradient(90deg, 
+        var(--primary-pink) 0%, 
+        var(--primary-purple) 20%, 
+        var(--primary-blue) 40%, 
+        var(--primary-green) 60%, 
+        var(--primary-yellow) 80%, 
+        var(--primary-pink) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: rainbow 3s linear infinite;
+}
+
+@keyframes rainbow {
+    to { background-position: 200% center; }
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.8s ease-out 0.8s backwards;
+}
+
+/* 統計表示 */
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.8s ease-out 1s backwards;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    animation: fadeInUp 0.8s ease-out 1.2s backwards;
+}
+
+.primary-btn, .secondary-btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.primary-btn {
+    background: linear-gradient(135deg, var(--primary-pink) 0%, var(--primary-purple) 100%);
+    color: white;
+    box-shadow: 0 8px 25px rgba(255, 182, 217, 0.3);
+}
+
+.primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(255, 182, 217, 0.4);
+}
+
+.secondary-btn {
+    background: white;
+    color: var(--text-dark);
+    border: 2px solid var(--primary-pink);
+}
+
+.secondary-btn:hover {
+    background: var(--primary-pink);
+    color: white;
+}
+
+/* ========================================
+   セクション共通スタイル
+   ======================================== */
+.section-title {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple), var(--primary-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 900;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    margin-bottom: 4rem;
+}
+
+/* ========================================
+   カテゴリセクション
+   ======================================== */
+.categories {
+    padding: 100px 0;
+    position: relative;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* カテゴリカード */
+.category-card {
+    background: var(--bg-card);
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.4s ease;
+    cursor: pointer;
+    border: 3px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+/* カテゴリカードのホバー背景 */
+.category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+}
+
+.category-card:hover::before {
+    opacity: 0.05;
+}
+
+.category-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-pink);
+}
+
+.category-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.category-icon {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.category-card:hover .category-icon {
+    transform: scale(1.2) rotate(10deg);
+}
+
+.category-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.category-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+/* タグ表示 */
+.category-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.tag {
+    padding: 0.3rem 0.8rem;
+    background: linear-gradient(135deg, #FFF0F5, #FFE4E9);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    border: 1px solid var(--primary-pink);
+}
+
+/* ========================================
+   人気作品セクション
+   ======================================== */
+.popular-works {
+    padding: 100px 0;
+    background: white;
+}
+
+.section-header {
+    margin-bottom: 3rem;
+}
+
+/* フィルタータブ */
+.filter-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.tab-button {
+    padding: 0.75rem 1.5rem;
+    background: var(--bg-light);
+    border: 2px solid transparent;
+    border-radius: 50px;
+    color: var(--text-secondary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-button:hover {
+    background: white;
+    border-color: var(--primary-pink);
+    color: var(--text-dark);
+}
+
+.tab-button.active {
+    background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 4px 15px rgba(255, 182, 217, 0.3);
+}
+
+/* 作品グリッド */
+.works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* 作品カード */
+.work-card {
+    background: var(--bg-card);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.4s ease;
+    cursor: pointer;
+    border: 3px solid transparent;
+}
+
+.work-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-pink);
+}
+
+/* サムネイル */
+.work-thumbnail {
+    height: 280px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* サムネイルオーバーレイ */
+.thumbnail-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.work-card:hover .thumbnail-overlay {
+    opacity: 1;
+}
+
+.view-button {
+    padding: 0.75rem 1.5rem;
+    background: white;
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.work-card:hover .view-button {
+    transform: scale(1);
+}
+
+/* 作品バッジ */
+.work-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 小説プレビューテキスト */
+.work-preview-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    color: white;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* 音楽の音波アニメーション */
+.audio-wave {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-end;
+    height: 100px;
+}
+
+.wave-bar {
+    width: 8px;
+    background: white;
+    border-radius: 10px;
+    animation: wave 1s ease-in-out infinite;
+}
+
+.wave-bar:nth-child(1) { animation-delay: 0s; height: 30%; }
+.wave-bar:nth-child(2) { animation-delay: 0.1s; height: 60%; }
+.wave-bar:nth-child(3) { animation-delay: 0.2s; height: 80%; }
+.wave-bar:nth-child(4) { animation-delay: 0.3s; height: 50%; }
+.wave-bar:nth-child(5) { animation-delay: 0.4s; height: 40%; }
+
+@keyframes wave {
+    0%, 100% { height: 30%; }
+    50% { height: 100%; }
+}
+
+/* 漫画パネル */
+.manga-panels {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+.panel {
+    aspect-ratio: 1;
+    background: white;
+    border-radius: 10px;
+    opacity: 0.8;
+}
+
+/* 動画時間表示 */
+.video-duration {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+/* 作品情報 */
+.work-info {
+    padding: 1.5rem;
+}
+
+.work-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+.work-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.author {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.category-label {
+    padding: 0.3rem 0.8rem;
+    background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));
+    color: white;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* 作品統計 */
+.work-stats {
+    display: flex;
+    gap: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+/* もっと見るボタン */
+.load-more {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.load-more-button {
+    padding: 1rem 3rem;
+    background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(255, 182, 217, 0.3);
+}
+
+.load-more-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(255, 182, 217, 0.4);
+}
+
+/* ========================================
+   投稿セクション
+   ======================================== */
+.upload-section {
+    padding: 100px 0;
+    background: var(--bg-light);
+}
+
+.upload-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    gap: 2rem;
+}
+
+/* ドラッグ&ドロップエリア */
+.upload-area {
+    background: white;
+    border: 3px dashed var(--primary-pink);
+    border-radius: var(--border-radius);
+    padding: 3rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.upload-area:hover {
+    border-color: var(--primary-purple);
+    background: #FFF9F9;
+}
+
+.upload-area.drag-over {
+    background: linear-gradient(135deg, #FFF0F5, #FFE4E9);
+    border-color: var(--primary-purple);
+    transform: scale(1.02);
+}
+
+.upload-icon {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.upload-area h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.file-select-button {
+    padding: 0.75rem 2rem;
+    background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 1rem 0;
+}
+
+.file-select-button:hover {
+    transform: scale(1.05);
+}
+
+.upload-info {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+/* 投稿フォーム */
+.upload-form {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-soft);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.required {
+    color: var(--primary-pink);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #E0E0E0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--primary-pink);
+    box-shadow: 0 0 0 3px rgba(255, 182, 217, 0.1);
+}
+
+.form-textarea {
+    resize: vertical;
+}
+
+.form-group small {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    display: block;
+    margin-top: 0.5rem;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.submit-button {
+    flex: 1;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 182, 217, 0.3);
+}
+
+.cancel-button {
+    padding: 1rem 2rem;
+    background: white;
+    border: 2px solid var(--primary-pink);
+    border-radius: 50px;
+    color: var(--text-dark);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cancel-button:hover {
+    background: var(--bg-light);
+}
+
+/* ========================================
+   フッター
+   ======================================== */
+.footer {
+    background: linear-gradient(135deg, #FFF0F5 0%, #FFE4E9 100%);
+    padding: 60px 0 30px;
+    border-top: 3px solid var(--primary-pink);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h4 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: var(--primary-pink);
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-link {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 182, 217, 0.2);
+}
+
+.social-link:hover {
+    background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(255, 182, 217, 0.3);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 2px solid rgba(255, 182, 217, 0.3);
+    color: var(--text-secondary);
+}
+
+/* ========================================
+   検索モーダル
+   ======================================== */
+.search-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+}
+
+.search-modal.active {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.search-modal-content {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--bg-light);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-modal:hover {
+    background: var(--primary-pink);
+    color: white;
+    transform: rotate(90deg);
+}
+
+.search-box {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.search-input {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    border: 2px solid var(--primary-pink);
+    border-radius: 50px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(255, 182, 217, 0.2);
+}
+
+.search-submit {
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-submit:hover {
+    transform: scale(1.05);
+}
+
+.search-suggestions h4 {
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.suggestion-tags {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.suggestion-tag {
+    padding: 0.5rem 1rem;
+    background: var(--bg-light);
+    border: 2px solid transparent;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.suggestion-tag:hover {
+    background: white;
+    border-color: var(--primary-pink);
+    color: var(--primary-pink);
+}
+
+/* ========================================
+   パーティクル背景
+   ======================================== */
+#particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* ========================================
+   レスポンシブデザイン - モバイル対応
+   ======================================== */
+@media (max-width: 768px) {
+    /* ナビゲーション */
+    .nav-menu {
+        display: none;
+    }
+    
+    .nav-container {
+        padding: 1rem;
+    }
+    
+    .upload-button {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    /* ヒーロー */
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .primary-btn, .secondary-btn {
+        width: 100%;
+    }
+    
+    /* セクション */
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    /* グリッド */
+    .categories-grid,
+    .works-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* フィルタータブ */
+    .filter-tabs {
+        gap: 0.5rem;
+    }
+    
+    .tab-button {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    /* フッター */
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    /* 検索モーダル */
+    .search-modal-content {
+        padding: 1.5rem;
+        width: 95%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .category-icon {
+        font-size: 4rem;
+    }
+    
+    .work-thumbnail {
+        height: 220px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .cancel-button {
+        width: 100%;
+    }
+}
+
+/* ========================================
+   ユーティリティクラス
+   ======================================== */
+.hidden {
+    display: none !important;
+}
+
+.fade-in {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* ローディングアニメーション */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 182, 217, 0.3);
+    border-top-color: var(--primary-pink);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* スクロールバーのカスタマイズ */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+}
+
+/* 選択時のハイライト */
+::selection {
+    background: var(--primary-pink);
+    color: white;
+}

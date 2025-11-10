@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クリエイター向けSNSのsample</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- ナビゲーションバー -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🎨</span>
+                <span class="logo-text">CreativeSNS</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">ホーム</a></li>
+                <li><a href="#categories">カテゴリ</a></li>
+                <li><a href="#popular">人気作品</a></li>
+                <li><a href="#upload">投稿</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="search-button">🔍</button>
+                <button class="upload-button">＋ 作品投稿</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ヒーローセクション -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <!-- アニメーション装飾要素 -->
+            <div class="floating-shapes">
+                <div class="shape shape-1">✨</div>
+                <div class="shape shape-2">🎵</div>
+                <div class="shape shape-3">🎭</div>
+                <div class="shape shape-4">📸</div>
+                <div class="shape shape-5">🖼️</div>
+                <div class="shape shape-6">📚</div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-line">クリエイター向けSNS</span>
+            </h1>
+            <p class="hero-subtitle">
+                イラスト、小説、音楽、写真、漫画、動画。<br>
+                すべてのクリエイターが輝けるプラットフォーム ✨
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">50,000+</div>
+                    <div class="stat-label">作品数</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10,000+</div>
+                    <div class="stat-label">クリエイター</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100万+</div>
+                    <div class="stat-label">閲覧数/月</div>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <button class="primary-btn">無料で始める</button>
+                <button class="secondary-btn">作品を見る</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- カテゴリセクション -->
+    <section id="categories" class="categories">
+        <div class="container">
+            <h2 class="section-title">カテゴリから探す</h2>
+            <p class="section-subtitle">あなたの好きなジャンルを見つけよう</p>
+            
+            <div class="categories-grid">
+                <!-- イラスト -->
+                <div class="category-card" data-category="illustration">
+                    <div class="category-icon">🎨</div>
+                    <h3>イラスト</h3>
+                    <p>12,543作品</p>
+                    <div class="category-tags">
+                        <span class="tag">ファンアート</span>
+                        <span class="tag">オリジナル</span>
+                        <span class="tag">風景画</span>
+                    </div>
+                </div>
+
+                <!-- 小説 -->
+                <div class="category-card" data-category="novel">
+                    <div class="category-icon">📚</div>
+                    <h3>小説</h3>
+                    <p>8,921作品</p>
+                    <div class="category-tags">
+                        <span class="tag">ファンタジー</span>
+                        <span class="tag">恋愛</span>
+                        <span class="tag">SF</span>
+                    </div>
+                </div>
+
+                <!-- 音楽 -->
+                <div class="category-card" data-category="music">
+                    <div class="category-icon">🎵</div>
+                    <h3>音楽</h3>
+                    <p>6,234作品</p>
+                    <div class="category-tags">
+                        <span class="tag">オリジナル曲</span>
+                        <span class="tag">カバー</span>
+                        <span class="tag">BGM</span>
+                    </div>
+                </div>
+
+                <!-- 写真 -->
+                <div class="category-card" data-category="photo">
+                    <div class="category-icon">📸</div>
+                    <h3>写真</h3>
+                    <p>15,678作品</p>
+                    <div class="category-tags">
+                        <span class="tag">風景</span>
+                        <span class="tag">ポートレート</span>
+                        <span class="tag">動物</span>
+                    </div>
+                </div>
+
+                <!-- 漫画 -->
+                <div class="category-card" data-category="manga">
+                    <div class="category-icon">📖</div>
+                    <h3>漫画</h3>
+                    <p>4,567作品</p>
+                    <div class="category-tags">
+                        <span class="tag">4コマ</span>
+                        <span class="tag">ストーリー</span>
+                        <span class="tag">エッセイ</span>
+                    </div>
+                </div>
+
+                <!-- 動画 -->
+                <div class="category-card" data-category="video">
+                    <div class="category-icon">🎬</div>
+                    <h3>動画</h3>
+                    <p>3,456作品</p>
+                    <div class="category-tags">
+                        <span class="tag">アニメーション</span>
+                        <span class="tag">MV</span>
+                        <span class="tag">Vlog</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 人気作品セクション -->
+    <section id="popular" class="popular-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">今週の人気作品</h2>
+                <div class="filter-tabs">
+                    <button class="tab-button active" data-filter="all">すべて</button>
+                    <button class="tab-button" data-filter="illustration">イラスト</button>
+                    <button class="tab-button" data-filter="novel">小説</button>
+                    <button class="tab-button" data-filter="music">音楽</button>
+                    <button class="tab-button" data-filter="photo">写真</button>
+                    <button class="tab-button" data-filter="manga">漫画</button>
+                    <button class="tab-button" data-filter="video">動画</button>
+                </div>
+            </div>
+
+            <div class="works-grid" id="worksGrid">
+                <!-- イラスト作品 1 -->
+                <div class="work-card" data-category="illustration">
+                    <div class="work-thumbnail" style="background: linear-gradient(135deg, #FFB6C1 0%, #FFC0CB 50%, #FFE4E1 100%);">
+                        <div class="thumbnail-overlay">
+                            <button class="view-button">👁️ 詳細を見る</button>
+                        </div>
+                        <div class="work-badge">🎨</div>
+                    </div>
+                    <div class="work-info">
+                        <h3 class="work-title">春</h3>
+                        <div class="work-meta">
+                            <span class="author">👤 さくらアート</span>
+                            <span class="category-label">イラスト</span>
+                        </div>
+                        <div class="work-stats">
+                            <span class="stat">❤️ 1,234</span>
+                            <span class="stat">👁️ 5,678</span>
+                            <span class="stat">💬 89</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 小説作品 1 -->
+                <div class="work-card" data-category="novel">
+                    <div class="work-thumbnail" style="background: linear-gradient(135deg, #E6E6FA 0%, #DDA0DD 50%, #DA70D6 100%);">
+                        <div class="thumbnail-overlay">
+                            <button class="view-button">📖 読む</button>
+                        </div>
+                        <div class="work-badge">📚</div>
+                        <div class="work-preview-text">
+                            <p>「あの雨の日の、あの場所で...」</p>
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <h3 class="work-title">雨上がり</h3>
+                        <div class="work-meta">
+                            <span class="author">👤 物語作家</span>
+                            <span class="category-label">小説</span>
+                        </div>
+                        <div class="work-stats">
+                            <span class="stat">❤️ 2,456</span>
+                            <span class="stat">👁️ 12,345</span>
+                            <span class="stat">💬 234</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 音楽作品 1 -->
+                <div class="work-card" data-category="music">
+                    <div class="work-thumbnail" style="background: linear-gradient(135deg, #87CEEB 0%, #98D8E8 50%, #B0E0E6 100%);">
+                        <div class="thumbnail-overlay">
+                            <button class="view-button">🎵 再生</button>
+                        </div>
+                        <div class="work-badge">🎵</div>
+                        <div class="audio-wave">
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <h3 class="work-title">思い出</h3>
+                        <div class="work-meta">
+                            <span class="author">👤 メロディメーカー</span>
+                            <span class="category-label">音楽</span>
+                        </div>
+                        <div class="work-stats">
+                            <span class="stat">❤️ 3,567</span>
+                            <span class="stat">👁️ 15,234</span>
+                            <span class="stat">💬 456</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 写真作品 1 -->
+                <div class="work-card" data-category="photo">
+                    <div class="work-thumbnail" style="background: linear-gradient(135deg, #FFE4B5 0%, #FFDAB9 50%, #FFE4C4 100%);">
+                        <div class="thumbnail-overlay">
+                            <button class="view-button">📷 拡大</button>
+                        </div>
+                        <div class="work-badge">📸</div>
+                    </div>
+                    <div class="work-info">
+                        <h3 class="work-title">夕暮れ</h3>
+                        <div class="work-meta">
+                            <span class="author">👤 風景写真家</span>
+                            <span class="category-label">写真</span>
+                        </div>
+                        <div class="work-stats">
+                            <span class="stat">❤️ 4,123</span>
+                            <span class="stat">👁️ 23,456</span>
+                            <span class="stat">💬 567</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 漫画作品 1 -->
+                <div class="work-card" data-category="manga">
+                    <div class="work-thumbnail" style="background: linear-gradient(135deg, #FFEFD5 0%, #FFE4C4 50%, #FFDAB9 100%);">
+                        <div class="thumbnail-overlay">
+                            <button class="view-button">📖 読む</button>
+                        </div>
+                        <div class="work-badge">📖</div>
+                        <div class="manga-panels">
+                            <div class="panel"></div>
+                            <div class="panel"></div>
+                            <div class="panel"></div>
+                            <div class="panel"></div>
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <h3 class="work-title">猫と日記</h3>
+                        <div class="work-meta">
+                            <span class="author">👤 まんが家志望</span>
+                            <span class="category-label">漫画</span>
+                        </div>
+                        <div class="work-stats">
+                            <span class="stat">❤️ 5,234</span>
+                            <span class="stat">👁️ 34,567</span>
+                            <span class="stat">💬 789</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 動画作品 1 -->
+                <div class="work-card" data-category="video">
+                    <div class="work-thumbnail" style="background: linear-gradient(135deg, #B0E57C 0%, #98D98E 50%, #90EE90 100%);">
+                        <div class="thumbnail-overlay">
+                            <button class="view-button">▶️ 再生</button>
+                        </div>
+                        <div class="work-badge">🎬</div>
+                        <div class="video-duration">3:45</div>
+                    </div>
+                    <div class="work-info">
+                        <h3 class="work-title">手描きアニメーション</h3>
+                        <div class="work-meta">
+                            <span class="author">👤 アニメクリエイター</span>
+                            <span class="category-label">動画</span>
+                        </div>
+                        <div class="work-stats">
+                            <span class="stat">❤️ 6,789</span>
+                            <span class="stat">👁️ 45,678</span>
+                            <span class="stat">💬 890</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- さらに作品を追加 -->
+                <div class="work-card" data-category="illustration">
+                    <div class="work-thumbnail" style="background: linear-gradient(135deg, #FFD1DC 0%, #FFB6D9 50%, #FFA6C9 100%);">
+                        <div class="thumbnail-overlay">
+                            <button class="view-button">👁️ 詳細を見る</button>
+                        </div>
+                        <div class="work-badge">🎨</div>
+                    </div>
+                    <div class="work-info">
+                        <h3 class="work-title">宇宙</h3>
+                        <div class="work-meta">
+                            <span class="author">👤 スペースアーティスト</span>
+                            <span class="category-label">イラスト</span>
+                        </div>
+                        <div class="work-stats">
+                            <span class="stat">❤️ 987</span>
+                            <span class="stat">👁️ 3,456</span>
+                            <span class="stat">💬 45</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="work-card" data-category="photo">
+                    <div class="work-thumbnail" style="background: linear-gradient(135deg, #AFEEEE 0%, #B0E0E6 50%, #ADD8E6 100%);">
+                        <div class="thumbnail-overlay">
+                            <button class="view-button">📷 拡大</button>
+                        </div>
+                        <div class="work-badge">📸</div>
+                    </div>
+                    <div class="work-info">
+                        <h3 class="work-title">海辺</h3>
+                        <div class="work-meta">
+                            <span class="author">👤 旅する写真家</span>
+                            <span class="category-label">写真</span>
+                        </div>
+                        <div class="work-stats">
+                            <span class="stat">❤️ 2,345</span>
+                            <span class="stat">👁️ 8,901</span>
+                            <span class="stat">💬 123</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="load-more">
+                <button class="load-more-button">もっと見る</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 投稿セクション -->
+    <section id="upload" class="upload-section">
+        <div class="container">
+            <h2 class="section-title">作品を投稿する</h2>
+            <p class="section-subtitle">あなたの創作を世界に届けよう！</p>
+            
+            <div class="upload-container">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📤</div>
+                    <h3>ファイルをドラッグ＆ドロップ</h3>
+                    <p>または</p>
+                    <button class="file-select-button">ファイルを選択</button>
+                    <input type="file" id="fileInput" hidden accept="image/*,video/*,.pdf,.txt">
+                    <div class="upload-info">
+                        対応形式: JPG, PNG, GIF, MP4, PDF, TXT, MP3<br>
+                        最大サイズ: 500MB
+                    </div>
+                </div>
+
+                <div class="upload-form">
+                    <div class="form-group">
+                        <label>タイトル <span class="required">*</span></label>
+                        <input type="text" class="form-input" placeholder="作品のタイトルを入力">
+                    </div>
+
+                    <div class="form-group">
+                        <label>カテゴリ <span class="required">*</span></label>
+                        <select class="form-select">
+                            <option value="">選択してください</option>
+                            <option value="illustration">イラスト</option>
+                            <option value="novel">小説</option>
+                            <option value="music">音楽</option>
+                            <option value="photo">写真</option>
+                            <option value="manga">漫画</option>
+                            <option value="video">動画</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>説明</label>
+                        <textarea class="form-textarea" rows="5" placeholder="作品の説明を入力してください"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>タグ</label>
+                        <input type="text" class="form-input" placeholder="例: ファンタジー, 風景, オリジナル">
+                        <small>カンマで区切って入力してください</small>
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="submit-button">投稿する 🚀</button>
+                        <button class="cancel-button">キャンセル</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <span class="logo-icon">🎨</span>
+                        <span class="logo-text">CreativeSNS</span>
+                    </div>
+                    <p>すべてのクリエイターのための創作プラットフォーム</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">🐦</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">▶️</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>カテゴリ</h4>
+                    <ul>
+                        <li><a href="#">イラスト</a></li>
+                        <li><a href="#">小説</a></li>
+                        <li><a href="#">音楽</a></li>
+                        <li><a href="#">写真</a></li>
+                        <li><a href="#">漫画</a></li>
+                        <li><a href="#">動画</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>サポート</h4>
+                    <ul>
+                        <li><a href="#">ヘルプセンター</a></li>
+                        <li><a href="#">利用規約</a></li>
+                        <li><a href="#">プライバシーポリシー</a></li>
+                        <li><a href="#">ガイドライン</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>クリエイター向け</h4>
+                    <ul>
+                        <li><a href="#">投稿ガイド</a></li>
+                        <li><a href="#">収益化について</a></li>
+                        <li><a href="#">コミュニティ</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CreativeSNS. All rights reserved. Portfolio Sample.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 検索モーダル -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-modal-content">
+            <button class="close-modal">✕</button>
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="作品やクリエイターを検索...">
+                <button class="search-submit">🔍</button>
+            </div>
+            <div class="search-suggestions">
+                <h4>人気の検索ワード</h4>
+                <div class="suggestion-tags">
+                    <span class="suggestion-tag">ファンタジー</span>
+                    <span class="suggestion-tag">風景画</span>
+                    <span class="suggestion-tag">オリジナル曲</span>
+                    <span class="suggestion-tag">猫</span>
+                    <span class="suggestion-tag">アニメーション</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- パーティクル背景のcanvas -->
+    <canvas id="particles"></canvas>
+
+ 
+    <!-- 1. ユーティリティ関数 -->
+    <script src="js/utils.js"></script>
+    
+    <!-- 2. 各機能モジュール -->
+    <script src="js/navigation.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/filter.js"></script>
+    <script src="js/upload.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/animations.js"></script>
+    
+    <!-- 3. メインファイル -->
+    <script src="js/main.js"></script>
+</body>
+</html>
